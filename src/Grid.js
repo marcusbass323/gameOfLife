@@ -3,9 +3,12 @@ import produce from 'immer'
 import Rules from './Rules'
 
 export default function Grid() {
+
+    //Defining grid
     const numRows = 25;
     const numCols = 35;
 
+    //Identifying neighbors
     const operations = [
         [0, 1],
         [0, -1],
@@ -17,8 +20,10 @@ export default function Grid() {
         [-1, 0]
     ];
 
+    //Empty the grid to reset game - wires to clear btn
     const generateEmptyGrid = () => {
         const rows = [];
+        //Iterate over grid and return new array with all dead cells
         for (let i = 0; i < numRows; i++) {
             rows.push(Array.from(Array(numCols), () => 0));
         }
@@ -33,6 +38,7 @@ export default function Grid() {
         return rows;
     });
 
+    //State hook for game state - running vs not-running
     const [running, setRunning] = useState(false);
 
     const runningRef = useRef();
