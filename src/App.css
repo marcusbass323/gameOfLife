@@ -7,12 +7,6 @@
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -28,11 +22,37 @@
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+button {
+  margin: 25px;
+  width: 100px;
+  border-radius: 5%;
+}
+
+#controlButtons {
+  display: flex;
+  flex-direction: row;
+}
+
+#Grid {
+  display: flex;
+  flex-direction: column;
+  width: 50%
+}
+
+#main {
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+}
+
+#presets {
+  display: flex;
+  flex-direction: column;
+  width: 10vw;
+  margin-top: 50%;
+}
+
+li{
+  font-size: .78rem;
+  line-height: 55px;
 }
