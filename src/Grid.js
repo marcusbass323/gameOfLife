@@ -30,6 +30,7 @@ export default function Grid() {
         return rows;
     }
 
+    //Initialize grid
     const [grid, setGrid] = useState(() => {
         const rows = [];
         for (let i = 0; i < numRows; i++) {
@@ -45,6 +46,7 @@ export default function Grid() {
     runningRef.current = running;
 
     const runSimulation = useCallback(() => {
+        // If game is running, simply return
         if (!runningRef.current) {
             return;
         }
@@ -56,14 +58,15 @@ export default function Grid() {
                         //Compute number of neighbors
                         let neighbors = 0;
                         operations.forEach(([x, y]) => {
-                            //Make sure we don't go out of bounds
+                            //Make sure mutations don't go out of bounds
                             const newI = i + x;
                             const newK = k + y;
                             if (newI >= 0 && newI < numRows && newK >= 0 && newK < numCols) {
                                 neighbors += g[newI][newK]
                             }
                         })
-                        if (neighbors < 2 || neighbors > 3) { //Rules 1 and 3
+                        //Covers rules 1 and 3 - 2 unnecessary 
+                        if (neighbors < 2 || neighbors > 3) { 
                             gridCopy[i][k] = 0;
                         } else if (g[i][k] === 0 && neighbors === 3) {
                             gridCopy[i][k] = 1;

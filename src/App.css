@@ -1,6 +1,61 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bangers&display=swap");
+
 .App {
   text-align: center;
+  width: 100vw;
+  overflow-x: hidden;
 }
+
+.Navbar {
+  display: flex;
+  justify-content: space-evenly;
+  border: 1px solid black;
+  background-color: black;
+}
+
+.Nav {
+  text-decoration: none;
+  font-family: 'Oswald', sans-serif;
+  color: white;
+  font-size: large;
+  padding: 10px;
+  position: relative;
+}
+
+.Nav:hover {
+  color: goldenrod;
+}
+
+.Nav:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  bottom: 0;
+  left: 0;
+  background-color: white;
+  visibility: hidden;
+  transform: scaleX(0);
+  transition: all 0.3s ease-in-out;
+}
+
+.Nav:hover:before {
+    visibility: visible;
+    transform: scaleX(1);
+    margin-bottom: 10px;
+  }
+
+#code {
+  color: white;
+  margin-top: 5px;
+}
+
+#code:hover {
+  color: goldenrod;
+  cursor: pointer;
+}
+
 
 .App-logo {
   height: 40vmin;
@@ -36,7 +91,22 @@ button {
 #Grid {
   display: flex;
   flex-direction: column;
-  width: 50%
+  width: 50%;
+  margin-top: 100px;
+}
+
+#Rules {
+  margin-top: 100px;
+}
+
+#subGrid {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+#gridBlock{
+  display: none;
 }
 
 #main {
@@ -55,4 +125,20 @@ button {
 li{
   font-size: .78rem;
   line-height: 55px;
+}
+
+.subGrid {
+  border: 1px solid red;
+}
+
+#title {
+  font-size: 7rem;
+  font-family: 'Bangers', cursive;
+}
+
+#titleContainer {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  position: absolute;
 }

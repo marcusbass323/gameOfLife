@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function Rules() {
     return (
-        <div>
+        <div id="Rules">
             <ol>
                 <li>Any live cell with fewer than two live neighbours dies, as if by underpopulation.</li>
                 <li>Any live cell with two or three live neighbours lives on to the next generation.</li>
