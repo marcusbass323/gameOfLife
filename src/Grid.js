@@ -66,7 +66,7 @@ export default function Grid() {
                             }
                         })
                         //Covers rules 1 and 3 - 2 unnecessary 
-                        if (neighbors < 2 || neighbors > 3) { 
+                        if (neighbors < 2 || neighbors > 3) {
                             gridCopy[i][k] = 0;
                         } else if (g[i][k] === 0 && neighbors === 3) {
                             gridCopy[i][k] = 1;
