@@ -92,12 +92,8 @@ button {
   display: flex;
   flex-direction: column;
   width: 50%;
-  margin-top: 100px;
 }
 
-#Rules {
-  margin-top: 100px;
-}
 
 #subGrid {
   display: flex;
@@ -106,7 +102,7 @@ button {
 }
 
 #gridBlock{
-  display: none;
+  
 }
 
 #main {
@@ -127,13 +123,35 @@ li{
   line-height: 55px;
 }
 
-.subGrid {
-  border: 1px solid red;
+#gridBlock {
+  animation: fadeOut 10s;
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
 }
 
 #title {
   font-size: 7rem;
   font-family: 'Bangers', cursive;
+  letter-spacing: 10px;
+  animation: fadeIn 15s;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 #titleContainer {
@@ -141,4 +159,5 @@ li{
   display: flex;
   justify-content: center;
   position: absolute;
+  margin-top: -110px;
 }
