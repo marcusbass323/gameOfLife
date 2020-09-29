@@ -195,6 +195,27 @@ li{
   color: white;
 }
 
+@media only screen and (max-width: 1400px) {
+  #controlButtons {
+    display: flex;
+    justify-content: center;
+  }
+
+  #main {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #Grid {
+    margin-left: 25%;
+  }
+
+  #title {
+    font-size: 50px;
+    margin-top: 50px;
+  }
+}
+
 @media only screen and (max-width: 700px) {
   #About {
     margin-top: 600px;

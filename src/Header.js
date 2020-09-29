@@ -22,15 +22,15 @@ export default function Header() {
           <Nav.Link className="Nav">Marcus Bass</Nav.Link>
           <Nav.Link className="Nav" onClick={handleShow}>About Project</Nav.Link>
           <OverlayTrigger placement="right" overlay={codeTooltip}>
-            <i class="fas fa-code fa-2x" id="code"></i>
+            <a target="_blank" href="https://github.com/marcusbass323/gameOfLife"><i class="fas fa-code fa-2x" id="code"></i></a>
           </OverlayTrigger>
         </Navbar>
 
           <Modal show={show} onHide={handleClose} centered="true" animation="true">
             <Modal.Header closeButton>
-              <Modal.Title>Modal heading</Modal.Title>
+              <Modal.Title>About this project:</Modal.Title>
             </Modal.Header>
-            <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+            <Modal.Body>An application built with React.js which allows users to run different "Game of Life" scenarios.</Modal.Body>
             <Modal.Footer>
               <Button variant="secondary" onClick={handleClose}>
                 Close

@@ -6,7 +6,7 @@ export default function Grid() {
 
     //Defining grid
     const numRows = 25;
-    const numCols = 35;
+    const numCols = 32;
 
     //Identifying neighbors
     const operations = [
