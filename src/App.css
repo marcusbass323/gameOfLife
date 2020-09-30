@@ -1,6 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Bangers&display=swap");
 
+#About {
+  margin-top: -75px;
+}
+
 .App {
   width: 100vw;
   overflow-x: hidden;
@@ -8,6 +12,15 @@
 
 #gameWarning {
   display: none;
+}
+
+#generationsContainer {
+  display: flex;
+  flex-direction: row;
+}
+
+#gridContainer {
+  margin-top: 50px;
 }
 
 #Modal {

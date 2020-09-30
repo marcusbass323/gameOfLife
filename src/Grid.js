@@ -37,6 +37,7 @@ export default function Grid() {
             rows.push(Array.from(Array(numCols), () => 0));
         }
         return rows;
+
     });
 
     //State hook for game state - running vs not-running
@@ -53,6 +54,7 @@ export default function Grid() {
         //Simulate game
         setGrid((g) => {
             return produce(g, gridCopy => {
+                let count = 0;
                 for (let i = 0; i < numRows; i++) {
                     for (let k = 0; k < numCols; k++) {
                         //Compute number of neighbors
@@ -61,18 +63,23 @@ export default function Grid() {
                             //Make sure mutations don't go out of bounds
                             const newI = i + x;
                             const newK = k + y;
+
                             if (newI >= 0 && newI < numRows && newK >= 0 && newK < numCols) {
                                 neighbors += g[newI][newK]
+
                             }
                         })
                         //Covers rules 1 and 3 - 2 unnecessary 
                         if (neighbors < 2 || neighbors > 3) {
                             gridCopy[i][k] = 0;
+                            count += 1;
                         } else if (g[i][k] === 0 && neighbors === 3) {
                             gridCopy[i][k] = 1;
+                            count += 1;
                         }
                     }
                 }
+                document.getElementById('generations').innerHTML = count
             });
         });
 
@@ -80,63 +87,70 @@ export default function Grid() {
     }, [])
 
     return (
-        <div id="main">
-            <div id="Grid">
-                <div style={{
-                    display: 'grid',
-                    gridTemplateColumns: `repeat(${numCols}, 20px)`
-                }}>
-                    {grid.map((rows, i) =>
-                        rows.map((col, k) => (
-                            <div
-                                key={`${i}-${k}`}
-                                onClick={() => {
-                                    const newGrid = produce(grid, gridCopy => {
-                                        gridCopy[i][k] = grid[i][k] ? 0 : 1;
-                                    });
-                                    setGrid(newGrid)
-                                }}
-                                style={{
-                                    width: 20,
-                                    height: 20,
-                                    backgroundColor: grid[i][k] ? 'pink' : undefined,
-                                    border: "1px solid black"
-                                }}
-                            />
-                        ))
-                    )}
-                </div>
-                <div id="controlButtons">
-                    <button
-                        onClick={() => {
-                            setRunning(!running); //Only run simulation if not running
-                            runningRef.current = true; //Prevents race condition
-                            runSimulation()
-                        }}
-                    >{running ? 'stop' : 'start'}
-                    </button>
-                    <button
-                        onClick={() => {
-                            const rows = []
-                            for (let i = 0; i < numRows; i++) {
-                                rows.push(
-                                    Array.from(Array(numCols), () => (Math.random() > 0.5 ? 1 : 0))
-                                );
-                            }
-                            setGrid(rows);
-                        }}
-                    >
-                        Random
-        </button>
-                    <button
-                        onClick={() => {
-                            setGrid(generateEmptyGrid());
-                        }}>
-                        Clear
-        </button>
-                </div>
+        <div id="gridContainer">
+            <div id="generationsContainer">
+                <h1>Generations:</h1>
+                <h1 id="generations"></h1>
             </div>
-            <Rules />
+            <div id="main">
+                <div id="Grid">
+                    <div style={{
+                        display: 'grid',
+                        gridTemplateColumns: `repeat(${numCols}, 20px)`
+                    }}>
+                        {grid.map((rows, i) =>
+                            rows.map((col, k) => (
+                                <div
+                                    key={`${i}-${k}`}
+                                    onClick={() => {
+                                        const newGrid = produce(grid, gridCopy => {
+                                            gridCopy[i][k] = grid[i][k] ? 0 : 1;
+                                        });
+                                        setGrid(newGrid)
+                                    }}
+                                    style={{
+                                        width: 20,
+                                        height: 20,
+                                        backgroundColor: grid[i][k] ? 'pink' : undefined, //Setting grid colors
+                                        border: "1px solid black"
+                                    }}
+                                />
+                            ))
+                        )}
+                    </div>
+                    <div id="controlButtons">
+                        <button
+                            onClick={() => {
+                                setRunning(!running); //Only run simulation if not running
+                                runningRef.current = true; //Prevents race condition
+                                runSimulation()
+                            }}
+                        >{running ? 'stop' : 'start'}
+                        </button>
+                        <button
+                            onClick={() => {
+                                const rows = []
+                                for (let i = 0; i < numRows; i++) {
+                                    rows.push(
+                                        Array.from(Array(numCols), () => (Math.random() > 0.5 ? 1 : 0))
+                                    );
+                                }
+                                setGrid(rows);
+                            }}
+                        >
+                            Random
+        </button>
+                        <button
+                            onClick={() => {
+                                setGrid(generateEmptyGrid());
+                                document.getElementById('generations').innerHTML = ''
+                            }}>
+                            Clear
+        </button>
+                    </div>
+                </div>
+                <Rules />
+            </div>
         </div>
     )
 }

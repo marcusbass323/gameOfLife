@@ -6,7 +6,6 @@ import './App.css';
 import Header from './Header';
 import Subheader from './Subheader';
 import Grid from './Grid';
-import Rules from './Rules';
 
 function App() {
   return (
@@ -18,7 +17,7 @@ function App() {
       <Grid />
       </div>
       <div id="gameWarning">
-      <i class="fas fa-skull-crossbones fa-10x"></i>
+      <i className="fas fa-skull-crossbones fa-10x"></i>
       <div>Please return to full desktop view to play game</div>
       </div>
     </div>

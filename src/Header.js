@@ -22,7 +22,7 @@ export default function Header() {
           <Nav.Link className="Nav">Marcus Bass</Nav.Link>
           <Nav.Link className="Nav" onClick={handleShow}>About Project</Nav.Link>
           <OverlayTrigger placement="right" overlay={codeTooltip}>
-            <a target="_blank" href="https://github.com/marcusbass323/gameOfLife"><i class="fas fa-code fa-2x" id="code"></i></a>
+            <a target="_blank" rel="noopener noreferrer" href="https://github.com/marcusbass323/gameOfLife"><i className="fas fa-code fa-2x" id="code"></i></a>
           </OverlayTrigger>
         </Navbar>
 
